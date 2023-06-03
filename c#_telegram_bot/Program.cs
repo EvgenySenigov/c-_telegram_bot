@@ -85,11 +85,14 @@ namespace TelegramBot
                         //команда для обратной связи
                         case ("/feedback"):
                             //встроенная кнопка
-                            InlineKeyboardButton urlButton = new InlineKeyboardButton("Связаться с автором");
+                            InlineKeyboardButton AuthorButton = new InlineKeyboardButton("Связаться с автором");
+                            InlineKeyboardButton CodeButton = new InlineKeyboardButton("Исходный код");
                             //ссылка на аккаунт автора
-                            urlButton.Url = "https://t.me/dedinside192";
-                            InlineKeyboardMarkup Keyboard = new InlineKeyboardMarkup(urlButton);
-                            await bot.SendTextMessageAsync(chatId, "Для обратной связи вы можете отправить свои пожелания автору.", replyMarkup: Keyboard);
+                            AuthorButton.Url = "https://t.me/dedinside192";
+                            CodeButton.Url = "https://github.com/EvgenySenigov/csharp_telegram_bot";
+                            var buttons = new List<InlineKeyboardButton> { AuthorButton, CodeButton};
+                            InlineKeyboardMarkup Keyboard = new InlineKeyboardMarkup(buttons);
+                            await bot.SendTextMessageAsync(chatId, "Для обратной связи вы можете отправить свои пожелания автору, а также увидеть исходный код.", replyMarkup: Keyboard);
                             break;
                         //обработка ответов на вопрос викторины
                         default:
