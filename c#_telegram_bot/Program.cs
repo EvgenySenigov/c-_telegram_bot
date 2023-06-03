@@ -54,7 +54,7 @@ namespace TelegramBot
                     chatId = message.Chat.Id;
                     fromId = message.From.Id;
                     userName = message.From.Username;
-                    //обработка сообщений
+                    //обработка сообщений через switch-case
                     switch (message.Text)
                     {
                         //начальное сообщение и список команд
@@ -72,7 +72,7 @@ namespace TelegramBot
                             break;
                         //команда для вывода топа игроков
                         case ("/top"):
-                            await ShowTop(chatId);
+                            await ShowTop(chatI);
                             break;
                         //команда для вывода личного результата
                         case ("/result"):
@@ -89,9 +89,13 @@ namespace TelegramBot
                             InlineKeyboardButton CodeButton = new InlineKeyboardButton("Исходный код");
                             //ссылка на аккаунт автора
                             AuthorButton.Url = "https://t.me/dedinside192";
+                            //ссылка на репозиторий
                             CodeButton.Url = "https://github.com/EvgenySenigov/csharp_telegram_bot";
+                            //массив кнопнок
                             var buttons = new List<InlineKeyboardButton> { AuthorButton, CodeButton};
+                            //объект клавиатуры с кнопками
                             InlineKeyboardMarkup Keyboard = new InlineKeyboardMarkup(buttons);
+                            //отправляем ответ на запрос
                             await bot.SendTextMessageAsync(chatId, "Для обратной связи вы можете отправить свои пожелания автору, а также увидеть исходный код.", replyMarkup: Keyboard);
                             break;
                         //обработка ответов на вопрос викторины
