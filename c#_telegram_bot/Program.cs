@@ -72,7 +72,7 @@ namespace TelegramBot
                             break;
                         //команда для вывода топа игроков
                         case ("/top"):
-                            await ShowTop(chatI);
+                            await ShowTop(chatId);
                             break;
                         //команда для вывода личного результата
                         case ("/result"):
